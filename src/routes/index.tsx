@@ -1,5 +1,6 @@
 import { LayoutFooter } from "@/layouts";
 import CoachOrClient from "@/pages/auth/CoachOrClient";
+import Clients from "@/pages/dashboard/clients/Clients";
 import { lazy } from "react";
 import { Route, Routes } from "react-router";
 
@@ -53,6 +54,8 @@ function Router() {
             <Route path="" element={<Dashboard />} />
             <Route path="engagements" element={<Engagements />} />
             <Route path="resources" element={<Resources />} />
+            <Route path="clients" element={<Clients />} />
+            {/* <Route path="reports" element={<Reports />} /> */}
           </Route>
         </Route>
       </Route>

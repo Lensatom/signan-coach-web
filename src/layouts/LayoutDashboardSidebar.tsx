@@ -61,7 +61,7 @@ function LayoutDashboardSidebar() {
           </ul>
         </div>
       </aside>
-      <main className="ml-[18%] w-full min-h-[90vh] border border-l border-t">
+      <main className="ml-[18%] w-full min-h-[90vh] border border-l border-t px-4">
         <Outlet />
       </main>
     </div>

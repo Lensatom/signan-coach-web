@@ -1,6 +1,11 @@
 import { Button, Input } from "@/components/base"
 import {
-  Card
+  Card,
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+  Icon
 } from "@/components/inc"
 import { EngagementsTable } from "./components"
 
@@ -83,20 +88,38 @@ function Engagements() {
       </section>
       <div className="border border-border-grey p-2 md:p-6 rounded-xl flex flex-col gap-6">
         <div className="flex justify-between items-center">
-          <Input className="w-1/3 h-8" />
-          <div className="flex gap-2">
+          <div className="w-[25%]">
+            <Input search />
+          </div>
+          <div className="flex gap-3">
             <Button variant="outline" size="sm" className="bg-transparent">
               Column
+              <Icon name="column" size={12} padding={0} />
             </Button>
             <Button variant="outline" size="sm" className="bg-transparent">
               Export
+              <Icon name="export" size={12} padding={0} />
             </Button>
             <Button variant="outline" size="sm" className="bg-transparent">
               Filters
+              <Icon name="filter" size={12} padding={0} />
             </Button>
-            <Button variant="outline" size="sm" className="bg-transparent">
-              Select Actions
-            </Button>
+            <DropdownMenu>
+              <DropdownMenuTrigger>
+                <Button variant="outline" size="sm" className="bg-transparent">
+                  Select Actions
+                  <Icon name="dropdownBlue" size={12} padding={0} />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent className="w-44">
+                <DropdownMenuItem>Create Folder</DropdownMenuItem>
+                <DropdownMenuItem>Upload File</DropdownMenuItem>
+                <DropdownMenuItem>Create Form</DropdownMenuItem>
+                <DropdownMenuItem>Create Link</DropdownMenuItem>
+                <DropdownMenuItem>Create Document</DropdownMenuItem>
+                <DropdownMenuItem>Create Themed Library</DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
           </div>
         </div>
         <Card>

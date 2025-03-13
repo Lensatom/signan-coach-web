@@ -15,28 +15,35 @@ import {
   Icon
 } from "@/components/inc"
 
-function ResourcesTable({
+function ClientsTable({
   data
 }:any) {
   return (
     <Table className="text-sm">
       <TableHeader>
         <TableRow>
+          <TableHead>Account Status</TableHead>
+          <TableHead>Company Type</TableHead>
           <TableHead>Name</TableHead>
-          <TableHead>Last Modified</TableHead>
-          <TableHead>Date Added</TableHead>
-          <TableHead className="text-center">Actions</TableHead>
+          <TableHead>Email</TableHead>
+          <TableHead>Primary Contact</TableHead>
+          <TableHead className="text-center">Connection Status</TableHead>
+          <TableHead></TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
         {data.map((detail:any) => (
           <TableRow>
-            <TableCell className="flex items-center gap-2">
-              <Icon name="comment" className="w-6 h-6 bg-primary rounded-full" size={14} />
-              Sample Evaluation Coaching
+            <TableCell>
+              <div className="w-5 h-5 flex justify-center items-center rounded-full bg-primary-20">
+                <div className="w-[22%] h-[22%] rounded-full bg-primary"></div>
+              </div>
             </TableCell>
-            <TableCell>{detail.date}</TableCell>
-            <TableCell>{detail.date}</TableCell>
+            <TableCell>{detail.company_type}</TableCell>
+            <TableCell>{detail.name}</TableCell>
+            <TableCell>{detail.email}</TableCell>
+            <TableCell>{detail.primary_contact}</TableCell>
+            <TableCell className="text-center">{detail.connection_status}</TableCell>
             <TableCell className="text-center">
               <DropdownMenu>
                 <DropdownMenuTrigger>
@@ -59,4 +66,4 @@ function ResourcesTable({
   )
 }
 
-export default ResourcesTable
+export default ClientsTable

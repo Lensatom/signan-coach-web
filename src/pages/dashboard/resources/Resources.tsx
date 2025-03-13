@@ -1,6 +1,10 @@
 import { Button, Input } from "@/components/base"
 import {
   Card,
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
   Icon
 } from "@/components/inc"
 import { ResourcesTable } from "./components"
@@ -66,14 +70,30 @@ function Resources() {
       </section>
       <div className="border border-border-grey p-2 md:p-6 rounded-xl flex flex-col gap-6">
         <div className="flex justify-between items-center">
-          <Input className="w-1/3 h-8" />
+          <div className="w-[25%]">
+            <Input search />
+          </div>
           <div className="flex gap-2">
             <Button variant="outline" size="sm" className="bg-transparent">
               All Types
+              <Icon name="filter" size={14} padding={0} />
             </Button>
-            <Button variant="outline" size="sm" className="bg-transparent">
-              Add Resource
-            </Button>
+            <DropdownMenu>
+              <DropdownMenuTrigger>
+                <Button variant="outline" size="sm" className="bg-transparent">
+                  Add Resources
+                  <Icon name="dropdownBlue" size={12} padding={0} />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent className="w-44">
+                <DropdownMenuItem>Create Folder</DropdownMenuItem>
+                <DropdownMenuItem>Upload File</DropdownMenuItem>
+                <DropdownMenuItem>Create Form</DropdownMenuItem>
+                <DropdownMenuItem>Create Link</DropdownMenuItem>
+                <DropdownMenuItem>Create Document</DropdownMenuItem>
+                <DropdownMenuItem>Create Themed Library</DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
           </div>
         </div>
         <Card>
