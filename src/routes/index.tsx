@@ -21,7 +21,9 @@ const VerifyEmail = lazy(() => import("@/pages/auth/VerifyEmail"));
 
 const Dashboard = lazy(() => import("@/pages/dashboard/dashboard/Dashboard"));
 const Engagements = lazy(() => import("@/pages/dashboard/engagements/Engagements"));
+const Chat = lazy(() => import("@/pages/dashboard/chat/Chat"));
 const Resources = lazy(() => import("@/pages/dashboard/resources/Resources"));
+const Reports = lazy(() => import("@/pages/dashboard/reports/Reports"));
 
 function Router() {
   return (
@@ -53,9 +55,10 @@ function Router() {
           <Route element={<LayoutDashboardSidebar />}>
             <Route path="" element={<Dashboard />} />
             <Route path="engagements" element={<Engagements />} />
+            <Route path="chat" element={<Chat />} />
             <Route path="resources" element={<Resources />} />
             <Route path="clients" element={<Clients />} />
-            {/* <Route path="reports" element={<Reports />} /> */}
+            <Route path="reports" element={<Reports />} />
           </Route>
         </Route>
       </Route>

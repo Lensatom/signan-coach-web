@@ -1,4 +1,14 @@
-import * as Icons from "@/assets/icons"
+import * as icons from "@/assets/icons"
+
+export type IconNameType = keyof typeof icons
+
+interface Props {
+  name: IconNameType
+  size?: number
+  padding?: number
+  bg?: string
+  className?: string
+}
 
 function Icon({
   name,
@@ -6,12 +16,11 @@ function Icon({
   padding=10,
   bg,
   className
-}:any) {
-  // @ts-ignore: (todo) use dynamic type
-  const icon = Icons[name]
+}:Props) {
+  const Icon = icons[name]
   return (
     <div style={{background: bg, width: size + padding, height: size + padding}} className={`flex justify-center items-center ${className}`}>
-      <img src={icon} width={size} />
+      <img src={Icon} width={size} />
     </div>
   )
 }

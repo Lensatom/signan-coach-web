@@ -22,15 +22,15 @@ function LayoutDashboardSidebar() {
     <div className="flex">
       <aside className="fixed w-[18%] h-[90vh] px-4 py-8 flex flex-col justify-between">
         <nav>
-          <ul className="flex flex-col">
+          <ul className="flex flex-col gap-2">
             {data.dashboard_navs.map((nav) => (
               <li>
                 <NavLink
                   to={`/dashboard${nav.href ? `${nav.href}` : ""}`}
                   className={
                     ({isActive}) => (
-                      `${isActive && "bg-grey-light"}
-                      w-full py-3 px-4 rounded-lg text-xs font-medium flex items-center gap-4`
+                      `${isActive && "bg-grey-light font-medium"}
+                      w-full py-3 px-4 rounded-lg text-xs flex items-center gap-4`
                     )
                   }
                   end

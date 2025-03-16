@@ -33,6 +33,11 @@
       "icon": "engagements"
     },
     {
+      "title": "Chat",
+      "href": "/chat",
+      "icon": "chat"
+    },
+    {
       "title": "Resources",
       "href": "/resources",
       "icon": "resources"
@@ -43,8 +48,8 @@
       "icon": "clients"
     },
     {
-      "title": "Report",
-      "href": "/report",
+      "title": "Reports",
+      "href": "/reports",
       "icon": "report"
     },
     {
