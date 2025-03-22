@@ -1,5 +1,5 @@
 import { GlobalImpact } from "../home/sections"
-import { CoachingPrograms, Hero, HowTo, MakeDifference, Testimonials } from "./sections"
+import { CoachingPrograms, Hero, HowTo, MakeDifference, Membership, Testimonials } from "./sections"
 
 function BecomeCoach() {
   return (
@@ -10,6 +10,7 @@ function BecomeCoach() {
       <MakeDifference />
       <Testimonials />
       <GlobalImpact />
+      <Membership />
     </div>
   )
 }
