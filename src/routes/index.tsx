@@ -24,6 +24,7 @@ const Engagements = lazy(() => import("@/pages/dashboard/engagements/Engagements
 const Chat = lazy(() => import("@/pages/dashboard/chat/Chat"));
 const Resources = lazy(() => import("@/pages/dashboard/resources/Resources"));
 const Reports = lazy(() => import("@/pages/dashboard/reports/Reports"));
+const Settings = lazy(() => import("@/pages/dashboard/settings/Settings"));
 
 function Router() {
   return (
@@ -59,6 +60,7 @@ function Router() {
             <Route path="resources" element={<Resources />} />
             <Route path="clients" element={<Clients />} />
             <Route path="reports" element={<Reports />} />
+            <Route path="settings" element={<Settings />} />
           </Route>
         </Route>
       </Route>

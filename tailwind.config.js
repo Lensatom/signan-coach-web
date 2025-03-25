@@ -15,7 +15,7 @@ module.exports = {
         primary: "#0052CC",
         "primary-20": "#EBF2FB",
         secondary: "#EBF2FB",
-        input: '#F2F2F2CC',
+        input: '#F2F2F2',
         danger: "#FF0202",
         warning: "#FFCE46",
         "input-text": '#3C3C43',

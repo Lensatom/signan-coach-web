@@ -11,9 +11,9 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuSeparator,
-  DropdownMenuTrigger
+  DropdownMenuTrigger,
+  Icon
 } from "@/components/inc"
-import { moreHorizontal } from "@/assets/icons"
 
 function SessionsTable({
   data
@@ -44,7 +44,7 @@ function SessionsTable({
             <TableCell className="text-center">
               <DropdownMenu>
                 <DropdownMenuTrigger>
-                  <img src={moreHorizontal} />
+                  <Icon name="more_horizontal" />
                 </DropdownMenuTrigger>
                 <DropdownMenuContent className="w-44">
                   <DropdownMenuItem>View</DropdownMenuItem>

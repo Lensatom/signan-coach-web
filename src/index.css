@@ -40,3 +40,7 @@
 .otp-input::placeholder {
   color: black;
 }
+
+* {
+  font-family: "Montserrat";
+}

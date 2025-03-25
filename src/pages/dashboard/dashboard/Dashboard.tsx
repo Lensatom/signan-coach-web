@@ -1,11 +1,15 @@
-import { addClient, createInvoice, dropdown, moreBars, settings } from "@/assets/icons"
-import { Button } from "@/components/base"
+import {
+  Button, Dialog,
+  DialogContent,
+  DialogTrigger
+} from "@/components/base"
 import {
   Card, DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuItem, DropdownMenuTrigger, HorizontalLine
+  DropdownMenuItem, DropdownMenuTrigger, HorizontalLine,
+  Icon
 } from "@/components/inc"
-import { Notification, SessionsTable, Tasks } from "./components"
+import { AddClient, CreateEngagement, Notification, SessionsTable, Tasks } from "./components"
 
 function Dashboard() {
   const notifications = [
@@ -90,42 +94,56 @@ function Dashboard() {
         <div className="hidden lg:flex gap-2">
           <Button variant="outline" size="sm" className="text-grey-text font-normal">
             Quick Setup
-            <img src={settings} />
+            <Icon name="settings" size={14} padding={0} />
           </Button>
-          <Button variant="outline" size="sm" className="text-grey-text font-normal">
-            Create Engagement
-            <img src={dropdown} />
-          </Button>
-          <Button variant="outline" size="sm" className="text-grey-text font-normal">
-            Add Client
-            <img src={addClient} />
-          </Button>
+          <Dialog>
+            <DialogTrigger asChild>
+              <Button variant="outline" size="sm" className="text-grey-text font-normal">
+                Create Engagement
+                <Icon name="add_thick" size={12} padding={0} />
+              </Button>
+            </DialogTrigger>
+            <DialogContent>
+              <CreateEngagement />
+            </DialogContent>
+          </Dialog>
+          <Dialog>
+            <DialogTrigger asChild>
+              <Button variant="outline" size="sm" className="text-grey-text font-normal">
+                Add Client
+                <Icon name="add_client" size={14} padding={0} />
+              </Button>
+            </DialogTrigger>
+            <DialogContent>
+              <AddClient />
+            </DialogContent>
+          </Dialog>
           <Button variant="outline" size="sm" className="text-grey-text font-normal">
             Create Invoice
-            <img src={createInvoice} />
+            <Icon name="create_invoice" size={14} padding={0} />
           </Button>
         </div>
         <div className="block lg:hidden">
           <DropdownMenu>
             <DropdownMenuTrigger>
-              <img src={moreBars} />
+              <Icon name="more_bars" />
             </DropdownMenuTrigger>
             <DropdownMenuContent className="mr-4">
               <DropdownMenuItem>
                 Quick Setup
-                <img src={settings} />
+                <Icon name="settings" size={14} padding={0} />
               </DropdownMenuItem>
               <DropdownMenuItem>
                 Create Engagement
-                <img src={dropdown} />
+                <Icon name="dropdown" size={14} padding={0} />
               </DropdownMenuItem>
               <DropdownMenuItem>
                 Add Client
-                <img src={addClient} />
+                <Icon name="add_client" size={14} padding={0} />
               </DropdownMenuItem>
               <DropdownMenuItem>
                 Create Invoice
-                <img src={createInvoice} />
+                <Icon name="create_invoice" size={14} padding={0} />
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
@@ -144,9 +162,9 @@ function Dashboard() {
                   </>
                 ))}
               </div>
-              <Button size="sm" variant="secondary" className="font-light flex items-center">
+              <Button size="sm" variant="secondary" className="flex items-center">
                 View more
-                <img src={dropdown} width={8} />
+                <Icon name="dropdown" size={12} padding={0} />
               </Button>
             </div>
           </Card.Body>
@@ -157,9 +175,9 @@ function Dashboard() {
           <Card.Body>
             <div className="flex flex-col items-center gap-4">
               <SessionsTable data={sessions} />
-              <Button size="sm" variant="secondary" className="font-light flex items-center">
+              <Button size="sm" variant="secondary" className="flex items-center">
                 View more
-                <img src={dropdown} width={8} />
+                <Icon name="dropdown" size={12} padding={0} />
               </Button>
             </div>
           </Card.Body>
