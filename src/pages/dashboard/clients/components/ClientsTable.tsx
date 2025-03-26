@@ -47,7 +47,7 @@ function ClientsTable({
             <TableCell className="text-center">
               <DropdownMenu>
                 <DropdownMenuTrigger>
-                  <Icon name="moreHorizontal" />
+                  <Icon name="more_horizontal" />
                 </DropdownMenuTrigger>
                 <DropdownMenuContent className="w-44">
                   <DropdownMenuItem>View</DropdownMenuItem>

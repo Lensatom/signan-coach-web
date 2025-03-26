@@ -113,7 +113,7 @@ function Clients() {
               <DropdownMenuTrigger>
                 <Button variant="outline" size="sm" className="bg-transparent">
                   Select Actions
-                  <Icon name="dropdownBlue" size={12} padding={0} />
+                  <Icon name="dropdown_blue" size={12} padding={0} />
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent className="w-44">
