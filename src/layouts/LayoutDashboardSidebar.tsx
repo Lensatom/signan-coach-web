@@ -20,11 +20,11 @@ function LayoutDashboardSidebar() {
   if (breakPoint === "md" || breakPoint === "sm") return <LayoutDashboardTabbar />
   return (
     <div className="flex">
-      <aside className="fixed w-[18%] h-[90vh] px-4 py-8 flex flex-col justify-between">
+      <aside className="fixed bg-white w-[18%] h-[90vh] border-0 border-r px-4 py-8 flex flex-col justify-between">
         <nav>
           <ul className="flex flex-col gap-2">
-            {data.dashboard_navs.map((nav) => (
-              <li>
+            {data.dashboard_navs.map((nav, index) => (
+              <li key={index}>
                 <NavLink
                   to={`/dashboard${nav.href ? `${nav.href}` : ""}`}
                   className={
@@ -61,7 +61,7 @@ function LayoutDashboardSidebar() {
           </ul>
         </div>
       </aside>
-      <main className="ml-[18%] w-full min-h-[90vh] border border-l border-t px-4">
+      <main className="pl-[18%] w-full min-h-[90vh] border-0 border-t px-4">
         <Outlet />
       </main>
     </div>

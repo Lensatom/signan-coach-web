@@ -1,4 +1,7 @@
-import { Button, Input } from "@/components/base"
+import {
+  Button, Checkbox, Dialog,
+  DialogContent, DialogTrigger, Input
+} from "@/components/base"
 import {
   Card,
   DropdownMenu,
@@ -7,61 +10,129 @@ import {
   DropdownMenuTrigger,
   Icon
 } from "@/components/inc"
+import { useColumns } from "@/hooks"
 import { EngagementsTable } from "./components"
 
+const engagements = [
+  {
+    "coach": "John Doe",
+    "client": "Alice Smith",
+    "details": {
+      "title": "Initial Consultation",
+      "body": "Discussed client's goals and set a roadmap for the next 3 months."
+    },
+    "date": "2023-10-15",
+    "status": "Completed"
+  },
+  {
+    "coach": "Jane Smith",
+    "client": "Bob Johnson",
+    "details": {
+      "title": "Progress Review",
+      "body": "Reviewed client's progress on fitness goals and adjusted the workout plan."
+    },
+    "date": "2023-10-20",
+    "status": "Completed"
+  },
+  {
+    "coach": "Emily Davis",
+    "client": "Charlie Brown",
+    "details": {
+      "title": "Nutrition Planning",
+      "body": "Created a customized meal plan to support the client's weight loss goals."
+    },
+    "date": "2023-10-25",
+    "status": "Scheduled"
+  },
+  {
+    "coach": "Michael Lee",
+    "client": "Eva Green",
+    "details": {
+      "title": "Mindset Coaching",
+      "body": "Worked on overcoming mental blocks and building confidence."
+    },
+    "date": "2023-11-01",
+    "status": "Pending"
+  },
+  {
+    "coach": "Sarah Wilson",
+    "client": "David Clark",
+    "details": {
+      "title": "Career Strategy Session",
+      "body": "Explored career advancement opportunities and created an action plan."
+    },
+    "date": "2023-11-05",
+    "status": "Scheduled"
+  }
+]
+
 function Engagements() {
-  const engagements = [
+  const initialColumns = [
     {
-      "coach": "John Doe",
-      "client": "Alice Smith",
-      "details": {
-        "title": "Initial Consultation",
-        "body": "Discussed client's goals and set a roadmap for the next 3 months."
-      },
-      "date": "2023-10-15",
-      "status": "Completed"
+        name: "Status",
+        active: true
     },
     {
-      "coach": "Jane Smith",
-      "client": "Bob Johnson",
-      "details": {
-        "title": "Progress Review",
-        "body": "Reviewed client's progress on fitness goals and adjusted the workout plan."
-      },
-      "date": "2023-10-20",
-      "status": "Completed"
+        name: "Coach",
+        active: true
     },
     {
-      "coach": "Emily Davis",
-      "client": "Charlie Brown",
-      "details": {
-        "title": "Nutrition Planning",
-        "body": "Created a customized meal plan to support the client's weight loss goals."
-      },
-      "date": "2023-10-25",
-      "status": "Scheduled"
+        name: "Coachee",
+        active: true
     },
     {
-      "coach": "Michael Lee",
-      "client": "Eva Green",
-      "details": {
-        "title": "Mindset Coaching",
-        "body": "Worked on overcoming mental blocks and building confidence."
-      },
-      "date": "2023-11-01",
-      "status": "Pending"
+        name: "Program",
+        active: true
     },
     {
-      "coach": "Sarah Wilson",
-      "client": "David Clark",
-      "details": {
-        "title": "Career Strategy Session",
-        "body": "Explored career advancement opportunities and created an action plan."
-      },
-      "date": "2023-11-05",
-      "status": "Scheduled"
+        name: "Date Created",
+        active: true
+    },
+    {
+        name: "Progress",
+        active: true
+    },
+    {
+        name: "Coachee Company",
+        active: false
+    },
+    {
+        name: "Start date",
+        active: false
+    },
+    {
+        name: "End date",
+        active: false
+    },
+    {
+        name: "Amount Paid",
+        active: false
+    },
+    {
+        name: "Session completed",
+        active: false
+    },
+    {
+        name: "Hours completed",
+        active: false
+    },
+    {
+        name: "Hours Remaining",
+        active: false
+    },
+    {
+        name: "Most Recent session",
+        active: false
+    },
+    {
+        name: "Next Session",
+        active: false
     }
   ]
+  const { columns, toggleColumn, activeColumns } = useColumns({
+    initialValues: initialColumns,
+    storeKey: "engagements-table-column"
+  })
 
   return (
     <div className="w-full h-full p-4 md:p-8 flex flex-col gap-10">
@@ -92,10 +163,24 @@ function Engagements() {
             <Input search />
           </div>
           <div className="flex gap-3">
-            <Button variant="outline" size="sm" className="bg-transparent">
-              Column
-              <Icon name="column" size={12} padding={0} />
-            </Button>
+            <Dialog>
+              <DialogTrigger asChild>
+                <Button variant="outline" size="sm" className="bg-transparent">
+                  Column
+                  <Icon name="column" size={12} padding={0} />
+                </Button>
+              </DialogTrigger>
+              <DialogContent showClose={false} className="sm:max-w-[425px]">
+                {columns.map((column:any, index:number) => {
+                  return (
+                    <div key={index} className="flex ai-center gap-2">
+                      <Checkbox checked={columns[index].active} onCheckedChange={() => toggleColumn(index)} />
+                      <label className="text-sm">{column.name}</label>
+                    </div>
+                  )
+                })}
+              </DialogContent>
+            </Dialog>
             <Button variant="outline" size="sm" className="bg-transparent">
               Export
               <Icon name="export" size={12} padding={0} />
@@ -125,7 +210,7 @@ function Engagements() {
         <Card>
           <Card.Header title={`Engagements (${engagements.length})`} info="info" />
           <Card.Body>
-            <EngagementsTable data={engagements} />
+            <EngagementsTable data={engagements} columns={activeColumns} />
           </Card.Body>
         </Card>
       </div>

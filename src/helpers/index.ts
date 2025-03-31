@@ -28,3 +28,14 @@ export const getToken = (): string | null => {
 export const clearToken = () => {
   localStorage.removeItem(TOKEN_KEY);
 };
+
+export const getStoredData = (key:string): string | null => {
+  const storedData = localStorage.getItem(key);
+  if (storedData === null) return null
+  return JSON.parse(storedData)
+};
+
+export const handleStoreData = (key:string, data:any) => {
+  const storableData = JSON.stringify(data)
+  localStorage.setItem(key, storableData);
+};

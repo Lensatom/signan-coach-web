@@ -34,9 +34,9 @@ const Input = React.forwardRef<HTMLInputElement, Props>(
 
     if (search) {
       return (
-        <div className="w-full flex justify-between items-center rounded-md p-0.5 pl-3 bg-[#EBF2FB]">
+        <div className="w-full flex justify-between items-center rounded-md pr-2 bg-[#EBF2FB]">
           <input
-            className={cn(inputVariants({ variant, className }))}
+            className={`${cn(inputVariants({ variant, className }))} outline-none border-none`}
             placeholder="Search for anything"
             ref={ref}
             {...props}

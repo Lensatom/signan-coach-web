@@ -8,23 +8,27 @@ import {
 } from "@/components/base"
 
 function EngagementsTable({
-  data
+  data,
+  columns
 }:any) {
+
   return (
     <Table className="text-sm">
       <TableHeader>
         <TableRow>
-          <TableHead>Status</TableHead>
-          <TableHead>Coach</TableHead>
+          {columns.map((column:any) => (
+            <TableHead key={column.name}>{column.name}</TableHead>
+          ))}
+          {/* <TableHead>Coach</TableHead>
           <TableHead>Coachee</TableHead>
           <TableHead>Program</TableHead>
           <TableHead>Date Created</TableHead>
-          <TableHead>Progress</TableHead>
+          <TableHead>Progress</TableHead> */}
         </TableRow>
       </TableHeader>
       <TableBody>
         {data.map((detail:any) => (
-          <TableRow>
+          <TableRow key={detail.date}>
             <TableCell>
               <div className="w-5 h-5 flex justify-center items-center rounded-full bg-primary-20">
                 <div className="w-[22%] h-[22%] rounded-full bg-primary"></div>
