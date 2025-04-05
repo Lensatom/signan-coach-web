@@ -6,11 +6,13 @@ import {
   TableHeader,
   TableRow
 } from "@/components/base"
+import { useNavigate } from "react-router-dom"
 
 function EngagementsTable({
   data,
   columns
 }:any) {
+  const navigate = useNavigate()
 
   return (
     <Table className="text-sm">
@@ -27,8 +29,8 @@ function EngagementsTable({
         </TableRow>
       </TableHeader>
       <TableBody>
-        {data.map((detail:any) => (
-          <TableRow key={detail.date}>
+        {data.map((detail:any, index:number) => (
+          <TableRow key={index} onClick={() => navigate(`${index}/overview`)} className="cursor-pointer">
             <TableCell>
               <div className="w-5 h-5 flex justify-center items-center rounded-full bg-primary-20">
                 <div className="w-[22%] h-[22%] rounded-full bg-primary"></div>

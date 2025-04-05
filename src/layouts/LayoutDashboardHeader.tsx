@@ -22,7 +22,7 @@ function LayoutDashboardHeader() {
   const navigate = useNavigate();
 
   const handleLogout = async () => {
-    await clearToken();
+    clearToken();
     navigate("/dashboard/login");
     toast.success("Logged out successfully!");
   };

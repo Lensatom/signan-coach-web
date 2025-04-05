@@ -1,6 +1,3 @@
-import { LayoutFooter } from "@/layouts";
-import CoachOrClient from "@/pages/auth/CoachOrClient";
-import Clients from "@/pages/dashboard/clients/Clients";
 import { lazy } from "react";
 import { Route, Routes } from "react-router";
 
@@ -8,11 +5,13 @@ const LayoutAuth = lazy(() => import("@/pages/auth/layouts/LayoutAuth"));
 const LayoutDashboardHeader = lazy(() => import("@/layouts/LayoutDashboardHeader"));
 const LayoutHeader = lazy(() => import("@/layouts/LayoutHeader"));
 const LayoutDashboardSidebar = lazy(() => import("@/layouts/LayoutDashboardSidebar"));
+const LayoutFooter = lazy(() => import("@/layouts/LayoutFooter"))
 
 const Home = lazy(() => import("@/pages/landing-page/home/Home"));
 const BecomeCoach = lazy(() => import("@/pages/landing-page/become-coach/BecomeCoach"));
 const FindCoach = lazy(() => import("@/pages/landing-page/find-coach/FindCoach"));
 
+const CoachOrClient = lazy(() => import("@/pages/auth/CoachOrClient"))
 const Login = lazy(() => import("@/pages/auth/Login"));
 const Register = lazy(() => import("@/pages/auth/Register"));
 const ConfirmEmail = lazy(() => import("@/pages/auth/resetPassword/ConfirmEmail"));
@@ -20,10 +19,20 @@ const NewPassword = lazy(() => import("@/pages/auth/resetPassword/NewPassword"))
 const VerifyEmail = lazy(() => import("@/pages/auth/VerifyEmail"));
 
 const Dashboard = lazy(() => import("@/pages/dashboard/dashboard/Dashboard"));
+
 const Engagements = lazy(() => import("@/pages/dashboard/engagements/Engagements"));
+const LayoutEngagementDetails = lazy(() => import("@/pages/dashboard/engagements/EngagementDetails/layouts/LayoutEngagementDetails"));
+const EngagementOverview = lazy(() => import("@/pages/dashboard/engagements/EngagementDetails/Overview"));
+const EngagementDetails = lazy(() => import("@/pages/dashboard/engagements/EngagementDetails/Details"));
+const EngagementGoals = lazy(() => import("@/pages/dashboard/engagements/EngagementDetails/Goals"));
+const EngagementResources = lazy(() => import("@/pages/dashboard/engagements/EngagementDetails/Resources"));
+const EngagementAnalytics = lazy(() => import("@/pages/dashboard/engagements/EngagementDetails/Analytics"));
+const EngagementSettings = lazy(() => import("@/pages/dashboard/engagements/EngagementDetails/Settings"));
+
 const Chat = lazy(() => import("@/pages/dashboard/chat/Chat"));
 const Resources = lazy(() => import("@/pages/dashboard/resources/Resources"));
 const Reports = lazy(() => import("@/pages/dashboard/reports/Reports"));
+const Clients = lazy(() => import("@/pages/dashboard/clients/Clients"))
 const Settings = lazy(() => import("@/pages/dashboard/settings/Settings"));
 
 function Router() {
@@ -54,8 +63,24 @@ function Router() {
         {/* dashboard */}
         <Route element={<LayoutDashboardHeader />}>
           <Route element={<LayoutDashboardSidebar />}>
+
+            {/* Dashboard */}
             <Route path="" element={<Dashboard />} />
-            <Route path="engagements" element={<Engagements />} />
+
+            {/* Engagements */}
+            <Route path="engagements">
+              <Route path="" element={<Engagements />} />
+              <Route path=":id" element={<LayoutEngagementDetails />}>
+                <Route path="overview" element={<EngagementOverview />} />
+                <Route path="details" element={<EngagementDetails />} />
+                <Route path="goals" element={<EngagementGoals />} />
+                <Route path="resources" element={<EngagementResources />} />
+                <Route path="analytics" element={<EngagementAnalytics />} />
+                <Route path="settings" element={<EngagementSettings />} />
+              </Route>
+            </Route>
+
+
             <Route path="chat" element={<Chat />} />
             <Route path="resources" element={<Resources />} />
             <Route path="clients" element={<Clients />} />

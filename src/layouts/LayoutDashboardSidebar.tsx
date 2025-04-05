@@ -33,7 +33,7 @@ function LayoutDashboardSidebar() {
                       w-full py-3 px-4 rounded-lg text-xs flex items-center gap-4`
                     )
                   }
-                  end
+                  end={nav.href === ""}
                 >
                   {/* todo: write correct dynamic types */}
                   {/* @ts-ignore: icon names exist as icons */}
