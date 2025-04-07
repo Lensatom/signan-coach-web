@@ -15,7 +15,7 @@ import {
   Icon
 } from "@/components/inc"
 
-function SessionsTable({
+export function SessionsTable({
   data
 }:any) {
   return (
@@ -60,5 +60,3 @@ function SessionsTable({
     </Table>
   )
 }
-
-export default SessionsTable
