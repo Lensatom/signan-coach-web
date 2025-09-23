@@ -21,7 +21,6 @@ import {
   Progress
 } from "@/components/inc"
 import React, { useState } from "react"
-import { CreateGoal } from "./CreateGoal"
 
 export function GoalsTable({data}:{data:any}) {
   return (
